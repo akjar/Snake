@@ -1,8 +1,10 @@
+/* Creating margin and padding for the html and body */
 html, body {
     margin: 0;
     padding: 0;
 }
 
+/* Creating the display of the canvas */
 canvas {
     display: block;
 }
