@@ -6,7 +6,7 @@ let w;
 let h;
 
 // Creating a function that sets up the game
-function setup() {
+function setup () {
   // creating a backdrop
   createCanvas(400, 400);
   
@@ -17,7 +17,7 @@ function setup() {
   h = floor (height/rez);
   
   // creating the speed of the snake
-  frameRate(6)
+  frameRate(3)
   
   // creating a snake
   snake = new Snake ();
@@ -59,7 +59,7 @@ function keyPressed () {
 }
 
 // Creating a function that draws our setup and updates game as its being played
-function draw() {
+function draw () {
   // running a scale function to scale the size of the our game resolution
   scale(rez);
   
