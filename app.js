@@ -5,6 +5,7 @@ let food;
 let w;
 let h;
 let fr = 3;
+let lvl = 1;
 
 // Creating a function that sets up the game
 function setup () {
@@ -26,10 +27,14 @@ function setup () {
   // running the food location function to place the food
   foodLocation();
 
-  // creating a score board to keep track of the players score
-  createDiv(`Score: ${snake.score}`).id('score')
-  console.log(`FR: ${fr}`)
-  console.log(snake.score)
+  // creating a scoreboard to keep track of the players score
+  createDiv(`Score: ${snake.score}`).id('score');
+  console.log(snake.score);
+
+  // creating a scoreboard to keep track of the players level
+  createDiv(`Level: ${lvl}`).id('lvl');
+  console.log(`FR: ${fr}`);
+  
 }
 
 // Creating a function that puts the food in a random location
@@ -64,17 +69,23 @@ function keyPressed () {
   }
 }
 
-  // Creating a function that increase the speed of the snake by 1 everytime the player score reaches a multiple of 5
-  function speedUp () {
+  // Creating a function that increase the players level and snake speed by 1 everytime the player score reaches a multiple of 5
+  function levelUp () {
     // when the player score reaches a multiple of 5 increase the snake speed by 1
     if (snake.score % 5 === 0) {
 
-      // increasing the speed by 1
-      fr++
+      // increasing the snake speed by 1
+      fr++;
+
+      // increasing the players level by 1
+      lvl++;
+
+      // updating the score board
+      select('#lvl').html(`Level: ${lvl}`);
 
       // setting the speed
-      frameRate(fr)
-      console.log(`NEW FR: ${fr}`)
+      frameRate(fr);
+      console.log(`NEW FR: ${fr}`);
     }
   }
 
@@ -95,8 +106,8 @@ function draw () {
     // updating the score board
     select('#score').html(`Score: ${snake.score}`);
 
-    // running the speedUp function
-    speedUp();
+    // running the levelUp function
+    levelUp();
 
     // running the foodLocation function
     foodLocation();
