@@ -19,9 +19,6 @@ class Snake {
 
       // make sure the player starts with a score of zero
       this.score = 0;
-
-      // make sure the speed of the snake is 3 at the start
-      this.fr = 3;
     }
     
     // Creating a function that sets the direction of the snake
@@ -90,20 +87,6 @@ class Snake {
       return false
     }
 
-    // Creating a function that increase the speed of the snake by 1 everytime the player score reaches a multiple of 5
-    speedUp () {
-      // when the player score reaches a multiple of 5 increase the snake speed by 1
-      if (this.score % 5 === 0) {
-
-        // increasing the speed by 1
-        this.fr++
-
-        // setting the speed
-        frameRate(this.fr)
-        console.log('THIS IS FR: ' + this.fr)
-      }
-    }
-    
     // Creating a function for when the snake eats the food
     eat (pos) {
       // getting the heads horizontal location
@@ -114,15 +97,12 @@ class Snake {
       
       // if the snake and the food have the same location then allow the snake to grow otherwise keep the snake the same size
       if (x == pos.x && y == pos.y) {
-        // increasing the player score by one
-        this.score++
-        console.log('THIS IS SCORE: ' + this.score)
 
         // running the grow function
         this.grow();
 
         // running the speedUp function
-        this.speedUp();
+        // this.speedUp();
         return true;
       }
        return false

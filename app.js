@@ -4,6 +4,7 @@ let rez = 20;
 let food;
 let w;
 let h;
+let fr = 3;
 
 // Creating a function that sets up the game
 function setup () {
@@ -17,13 +18,18 @@ function setup () {
   h = floor (height/rez);
   
   // creating the speed of the snake
-  frameRate(3)
+  frameRate(fr)
   
   // creating a snake
   snake = new Snake ();
   
   // running the food location function to place the food
   foodLocation();
+
+  // creating a score board to keep track of the players score
+  createDiv(`Score: ${snake.score}`).id('score')
+  console.log(`FR: ${fr}`)
+  console.log(snake.score)
 }
 
 // Creating a function that puts the food in a random location
@@ -58,6 +64,21 @@ function keyPressed () {
   }
 }
 
+  // Creating a function that increase the speed of the snake by 1 everytime the player score reaches a multiple of 5
+  function speedUp () {
+    // when the player score reaches a multiple of 5 increase the snake speed by 1
+    if (snake.score % 5 === 0) {
+
+      // increasing the speed by 1
+      fr++
+
+      // setting the speed
+      frameRate(fr)
+      console.log(`NEW FR: ${fr}`)
+    }
+  }
+
+
 // Creating a function that draws our setup and updates game as its being played
 function draw () {
   // running a scale function to scale the size of the our game resolution
@@ -66,8 +87,18 @@ function draw () {
   // creating the color of the background of the game
   background(220);
   
-  // when the snake eats the food put a new piece of food radomly on the board
+  // when the snake eats the food increase players score by 1, run the speed up function, and put a new piece of food radomly on the board
   if  (snake.eat(food)) {
+    // increasing the players score by 1
+    snake.score++;
+
+    // updating the score board
+    select('#score').html(`Score: ${snake.score}`);
+
+    // running the speedUp function
+    speedUp();
+
+    // running the foodLocation function
     foodLocation();
   }
   
