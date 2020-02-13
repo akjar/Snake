@@ -70,7 +70,7 @@ class Snake {
       
       // if the snake hits one of the walls end the game otherwise continue playing
       if (x > w-1 || x < 0 || y > h-1 || y < 0) {
-        return true
+        return true;
       }
       
       // going through the entire body of the snake
@@ -84,7 +84,7 @@ class Snake {
           return true;
         }
       }
-      return false
+      return false;
     }
 
     // Creating a function for when the snake eats the food
@@ -100,12 +100,9 @@ class Snake {
 
         // running the grow function
         this.grow();
-
-        // running the speedUp function
-        // this.speedUp();
         return true;
       }
-       return false
+       return false;
     }
     
     // Creating a function that will show the snake
