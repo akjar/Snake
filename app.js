@@ -7,6 +7,12 @@ let h;
 let fr = 3;
 let lvl = 1;
 let previousDir = [0, 0];
+let leftButton;
+let rightButton;
+let upButton;
+let downButton;
+let score;
+let level;
 
 // Creating a function that sets up the game
 function setup () {
@@ -30,10 +36,59 @@ function setup () {
 
   // creating a scoreboard to keep track of the players level
   createDiv(`Level: ${lvl}`).id('lvl');
-  
+
+  // creating a button that when pressed the snake moves left
+  leftButton = createButton('Left').id('lBtn')
+  leftButton.mousePressed(moveLeft)
+
+  // creating a button that when pressed the snake moves right
+  rightButton = createButton('Right').id('rBtn')
+  rightButton.mousePressed(moveRight)
+
+  // creating a button that when pressed the snake moves up
+  upButton = createButton('Up').id('uBtn')
+  upButton.mousePressed(moveUp)
+
+  // creating a button that when pressed the snake moves down
+  downButton = createButton('Down').id('dBtn')
+  downButton.mousePressed(moveDown)
+
   // running the food location function to place the food
   foodLocation();
 }
+
+// Creating a function to move the snake left and not move in the opposite direction
+function moveLeft() {
+  if (!arraysEqual(previousDir, [1, 0])) {
+    snake.setDir(-1, 0);
+    previousDir = [-1, 0];
+  }
+}
+
+// Creating a function to move the snake right and not move in the opposite direction
+function moveRight() {
+  if (!arraysEqual(previousDir, [-1, 0])) {
+    snake.setDir(1, 0);
+    previousDir = [1, 0];
+  }
+}
+
+// Creating a function to move the snake up and not move in the opposite direction
+function moveUp() {
+  if (!arraysEqual(previousDir, [0, 1])) {
+    snake.setDir(0, -1);
+    previousDir = [0, -1];
+  }
+}
+
+// Creating a function to move the snake down and not move in the opposite direction
+function moveDown() {
+  if (!arraysEqual(previousDir, [0, -1])) {
+    snake.setDir(0, 1);
+    previousDir = [0, 1];
+  }
+}
+
 
 // Creating a function that puts the food in a random location
 function foodLocation () {
@@ -121,6 +176,10 @@ function levelUp () {
   }
 }
 
+// Creating a function that reloads the window
+function retry () {
+  window.location.reload()
+}
 
 // Creating a function that draws our setup and updates game as its being played
 function draw () {
@@ -155,7 +214,7 @@ function draw () {
   if (snake.endGame()) {
     background(255, 0, 0);
     // creating a button to play again
-    createButton('Try Again!').id('btn').mousePressed()
+    createButton('Try Again!').id('btn').mousePressed(retry)
     noLoop();
   }
   
