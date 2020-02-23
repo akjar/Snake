@@ -189,6 +189,15 @@ function draw () {
   // creating the color of the background of the game
   background(220);
   
+  // choosing the color of the food to be red
+  fill(255, 0, 0);
+
+  // making sure our food is to scale
+  noStroke();
+  
+  // choosing the shape of the food to be square
+  rect(food.x, food.y, 1, 1);
+
   // when the snake eats the food increase players score by 1, run the speed up function, and put a new piece of food radomly on the board
   if  (snake.eat(food)) {
     // increasing the players score by 1
@@ -202,6 +211,9 @@ function draw () {
 
     // running the foodLocation function
     foodLocation();
+
+    // change the food black while it is being eaten (looks like the snake is eating the food instead of food eating snake)
+    fill(0)
   }
   
   // running a function to update the the snake
@@ -217,13 +229,4 @@ function draw () {
     createButton('Try Again!').id('btn').mousePressed(retry)
     noLoop();
   }
-  
-  // choosing the color of the food to be red
-  fill(255, 0, 0);
-
-  // making sure our food is to scale
-  noStroke();
-  
-  // choosing the shape of the food to be square
-  rect(food.x, food.y, 1, 1);
 }
