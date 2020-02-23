@@ -11,6 +11,7 @@ let leftButton;
 let rightButton;
 let upButton;
 let downButton;
+let restart;
 let score;
 let level;
 
@@ -38,20 +39,20 @@ function setup () {
   createDiv(`Level: ${lvl}`).id('lvl');
 
   // creating a button that when pressed the snake moves left
-  leftButton = createButton('Left').id('lBtn')
+  leftButton = createButton('Left').id('lBtn').position(115, 465)
   leftButton.mousePressed(moveLeft)
 
-  // creating a button that when pressed the snake moves right
-  rightButton = createButton('Right').id('rBtn')
-  rightButton.mousePressed(moveRight)
-
   // creating a button that when pressed the snake moves up
-  upButton = createButton('Up').id('uBtn')
+  upButton = createButton('Up').id('uBtn').position(170, 440)
   upButton.mousePressed(moveUp)
 
   // creating a button that when pressed the snake moves down
-  downButton = createButton('Down').id('dBtn')
+  downButton = createButton('Down').id('dBtn').position(170, 465)
   downButton.mousePressed(moveDown)
+
+  // creating a button that when pressed the snake moves right
+  rightButton = createButton('Right').id('rBtn').position(225, 465)
+  rightButton.mousePressed(moveRight)
 
   // running the food location function to place the food
   foodLocation();
@@ -226,7 +227,7 @@ function draw () {
   if (snake.endGame()) {
     background(255, 0, 0);
     // creating a button to play again
-    createButton('Try Again!').id('btn').mousePressed(retry)
+    restart = createButton('Try Again!').id('btn').position(170, 175).mousePressed(retry)
     noLoop();
   }
 }

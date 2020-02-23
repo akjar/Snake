@@ -8,4 +8,34 @@ html, body {
 canvas {
     display: block;
 }
+
+#score {
+    max-width: 400px;
+    text-align: center;
+}
+
+#lvl{
+    max-width: 400px;
+    text-align: center;
+}
+
+#lBtn {
+    margin: 5px;
+    width: 50px;
+}
+
+#rBtn {
+    margin: 5px;
+    width: 50px;
+}
+
+#uBtn {
+    margin: 5px;
+    width: 50px;
+}
+
+#dBtn {
+    margin: 5px;
+    width: 50px;
+}
   
