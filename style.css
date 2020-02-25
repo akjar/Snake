@@ -9,33 +9,21 @@ canvas {
     display: block;
 }
 
-#score {
-    max-width: 400px;
+#scoreboard {
     text-align: center;
 }
 
-#lvl{
-    max-width: 400px;
+#instructions {
     text-align: center;
 }
 
-#lBtn {
+.aBtn {
     margin: 5px;
-    width: 50px;
+    width: 125px;
+    height: 75px;
 }
 
-#rBtn {
-    margin: 5px;
-    width: 50px;
+#btn {
+    width: 125px;
+    height: 75px;  
 }
-
-#uBtn {
-    margin: 5px;
-    width: 50px;
-}
-
-#dBtn {
-    margin: 5px;
-    width: 50px;
-}
-  

@@ -18,7 +18,7 @@ let level;
 // Creating a function that sets up the game
 function setup () {
   // creating a backdrop
-  createCanvas(400, 400);
+  createCanvas(700, 700).position(75, 55);
   
   // creating width resolution
   w = floor(width/rez);
@@ -32,26 +32,26 @@ function setup () {
   // creating a snake
   snake = new Snake ();
   
-  // creating a scoreboard to keep track of the players score
-  createDiv(`Score: ${snake.score}`).id('score');
+  // creating a scoreboard to keep track of the players score and level
+  createDiv(`Score: ${snake.score} Level: ${lvl}`).id('scoreboard').position(360, 35);
 
-  // creating a scoreboard to keep track of the players level
-  createDiv(`Level: ${lvl}`).id('lvl');
+  // creating instructions on how to start
+  createDiv(`Press any arrow key on your keyboard or any arrow button below to start!`).id('instructions').position(200, 15);
 
   // creating a button that when pressed the snake moves left
-  leftButton = createButton('Left').id('lBtn').position(115, 465)
+  leftButton = createButton('Left').class('aBtn').position(225, 805)
   leftButton.mousePressed(moveLeft)
 
   // creating a button that when pressed the snake moves up
-  upButton = createButton('Up').id('uBtn').position(170, 440)
+  upButton = createButton('Up').class('aBtn').position(360, 760)
   upButton.mousePressed(moveUp)
 
   // creating a button that when pressed the snake moves down
-  downButton = createButton('Down').id('dBtn').position(170, 465)
+  downButton = createButton('Down').class('aBtn').position(360, 850)
   downButton.mousePressed(moveDown)
 
   // creating a button that when pressed the snake moves right
-  rightButton = createButton('Right').id('rBtn').position(225, 465)
+  rightButton = createButton('Right').class('aBtn').position(495, 805)
   rightButton.mousePressed(moveRight)
 
   // running the food location function to place the food
@@ -170,7 +170,7 @@ function levelUp () {
     lvl++;
 
     // updating the score board
-    select('#lvl').html(`Level: ${lvl}`);
+    select('#scoreboard').html(`Score: ${snake.score} Level: ${lvl}`);
 
     // setting the speed
     frameRate(fr);
@@ -205,7 +205,7 @@ function draw () {
     snake.score++;
 
     // updating the score board
-    select('#score').html(`Score: ${snake.score}`);
+    select('#scoreboard').html(`Score: ${snake.score} Level: ${lvl}`);
 
     // running the levelUp function
     levelUp();
@@ -227,7 +227,7 @@ function draw () {
   if (snake.endGame()) {
     background(255, 0, 0);
     // creating a button to play again
-    restart = createButton('Try Again!').id('btn').position(170, 175).mousePressed(retry)
+    restart = createButton('Try Again!').id('btn').position(370, 370).mousePressed(retry)
     noLoop();
   }
 }
